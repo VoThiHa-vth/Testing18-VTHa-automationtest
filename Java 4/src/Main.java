@@ -121,18 +121,18 @@ public class Main {
 
 // Bài 4: Tính tổng các số trong mảng
     public static void sum() {
-        List<Integer> list = new ArrayList<>(Arrays.asList(5,3,7,2,9));
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(5,3,7,2,9));
         int sum = 0;
-        for (int i = 0; i <= list.size(); i++) {
-            sum += list.get(i);
+        for (int i = 0; i <= list1.size(); i++) {
+            sum += list1.get(i);
         }
         System.out.println("Sum: " + sum);
 
 // Tính trung bình:
-        double avg = (double) sum/ list.size();
+        double avg = (double) sum/ list1.size();
         System.out.println("Avg: " + avg);
 
-    }
+//    }
 
     public static void removeSoAm(){
         List<Integer> list = new ArrayList<>(Arrays.asList(3,7,-2,8,9,-4));
@@ -181,8 +181,16 @@ public class Main {
        learningCollection();
 
 // Bài 4:
+// Bài 4: Tính tổng các số trong mảng
+//        List<Integer> list1 = new ArrayList<>(Arrays.asList(5,3,7,2,9));
+//        System.out.println(list1);
+//            int sum = 0;
+//            for (int list : list1) {
+//                sum += list;
+//            }
+//            System.out.println("Sum: " + sum);
 
-        removeSoAm();
+//        removeSoAm();
 
 
 

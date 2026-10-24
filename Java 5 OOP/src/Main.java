@@ -45,7 +45,20 @@
 // TÍNH KẾ THỪA: + Class cha sẽ chứa những thuộc tính chung nhất của các đối tượng
 //               + Class con sẽ kế thừa các thuộc tính của class cha;
 
+// TÍNH ĐÓNG GÓI
+// Bao gồm: private, protected, public
+//      1. private: chỉ nội bộ trong class dùng, bên ngoài không thể truy cập kể cả class con;
+//      2. public: tất cả class bên ngoài đều có thể ử dụng được
+//      3. protected: CHỈ cho class con có thể dùng được, class khác không thể sử dụng
+// NGUYÊN TẮC:
+//      1. CÁc thuộc tính BẮT BUỘC phải dung private, trừ 1 số case thì dùng protected
+//      2. Hàm khởi tạo BẮT BUỘC dùng public
+//      3. Trong case các thuộc tih private muốn truy cập tới =>> thì dùng hàm getter, sette
 
+
+// TÍNH TRỪU TƯỢNG:
+// Class cha: BẮT BUỘC CHỈ DÙNG cho class con kế thừa, không được dùng để tạo đối tượng
+// Thêm keyword abstract cho class cha
 
 
 import java.util.ArrayList;
@@ -72,10 +85,10 @@ public class Main {
 //        hs2.display();
 
 // Cách 2: Tạo danh sách học sinh: tạo mảng/list
-        hs1.input();
+//        hs1.input();
         System.out.println("===================");
         Student hs2 = new Student();
-        hs2.input();
+//        hs2.input();
 
         Student hs3 = new Student("003", "D", "HCMC","0123456","D","Nam",20);
 
@@ -106,6 +119,7 @@ public class Main {
         Car mec = new Car("1","Mercedec","Mer2026","ĐEN",4,"Xăng");
         mec.display();
 
+//        Vehicle vehicle = new.Vehicle(); =>> LỖI vì class Vehicle là class cha (do dùng abstract)
 
 
 
