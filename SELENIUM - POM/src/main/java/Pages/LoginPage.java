@@ -21,6 +21,10 @@ public class LoginPage extends  BasePage{
 // input[@name='username'] => tìm tất cả các th input có thuộc tính name với value là nameuser
 // input[@name='username']
     private static final By INPUT_USERNAME = By.xpath("//input[@name='username']");
+    private static final By INPUT_PASSWORD = By.xpath("//input[@name='password']");
+    private static final By LOGIN_BTN = By.xpath("//button[@type='submit']");
+
+
 
     public LoginPage(WebDriver driver, WebDriverWait wait){
         super(driver, wait);
@@ -41,9 +45,19 @@ public class LoginPage extends  BasePage{
 //              Ưu điểm: Dễ dàng thêm log kiểm tra, dễ sửa chữa fix bug
 
 //      + Cách 2:  gôm các step chung 1 function. Cách viết như dưới:
-    public void login(String username){
+    public void login(String username, String password) throws InterruptedException {
         WebElement usernameInput = driver.findElement(INPUT_USERNAME);
         usernameInput.sendKeys(username);
+
+        Thread.sleep(2000);
+
+        WebElement passwordInput = driver.findElement(INPUT_PASSWORD);
+        passwordInput.sendKeys(password);
+
+        Thread.sleep(2000);
+
+        WebElement loginBtn = driver.findElement(LOGIN_BTN);
+        loginBtn.click();
     }
 
 
