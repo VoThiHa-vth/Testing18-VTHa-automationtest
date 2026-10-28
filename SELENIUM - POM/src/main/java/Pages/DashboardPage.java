@@ -3,6 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage extends BasePage{
@@ -13,13 +14,31 @@ public class DashboardPage extends BasePage{
     // Thẻ //a => tìm tất cả các thẻ a có trong page
     // chính thẻ <a> đang xét
     //  .//span => tìm tất cả các thẻ span có trong thẻ a
+    private static final By ADMIN_HEADER = By.xpath("//h6[text()='Admin']");
 
     public DashboardPage (WebDriver driver, WebDriverWait wait){
         super(driver, wait);
     }
 
-    public boolean isElementPresent(){
+    public boolean isElementPresent() throws InterruptedException {
+        boolean checkLocators = true;
+
         WebElement menuAdmin = driver.findElement(MENU_ADMIN);
-        return menuAdmin.isDisplayed();
+        if (!menuAdmin.isDisplayed()){
+            checkLocators = false;
+            System.out.println("Khong tim thay locators menuAdmin");
+            return checkLocators;
+        }
+
+        menuAdmin.click();
+
+//        WebElement adminHeader = driver.findElement(ADMIN_HEADER);
+        WebElement adminHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(ADMIN_HEADER));
+        if (!adminHeader.isDisplayed()){
+            checkLocators = false;
+            System.out.println("Khong tim thay locators adminHeader");
+        }
+        Thread.sleep(2000);
+        return checkLocators;
     }
 }

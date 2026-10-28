@@ -1,0 +1,17 @@
+[
+  {
+    "username": "Admin",
+    "password": "admin123",
+    "success": true
+  },
+  {
+    "username": "Admin",
+    "password": "failPass",
+    "success": false
+  },
+  {
+    "username": "failUsername",
+    "password": "admin123",
+    "success": false
+  }
+]
