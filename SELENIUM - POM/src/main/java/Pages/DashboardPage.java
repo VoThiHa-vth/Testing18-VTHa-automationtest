@@ -15,6 +15,8 @@ public class DashboardPage extends BasePage{
     // chính thẻ <a> đang xét
     //  .//span => tìm tất cả các thẻ span có trong thẻ a
     private static final By ADMIN_HEADER = By.xpath("//h6[text()='Admin']");
+    private static  final By USER_DROPDOWN = By.xpath("//span[@class='oxd-userdropdown-tab']");
+    private static  final By LOGOUT_BTN = By.xpath("//a[@href='/web/index.php/auth/logout']");
 
     public DashboardPage (WebDriver driver, WebDriverWait wait){
         super(driver, wait);
@@ -41,4 +43,18 @@ public class DashboardPage extends BasePage{
         Thread.sleep(2000);
         return checkLocators;
     }
+
+    public void logout(){
+        WebElement userDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(USER_DROPDOWN));
+        userDropdown.click();
+        WebElement logoutBtn = wait.until(ExpectedConditions.elementToBeClickable(LOGOUT_BTN));
+        logoutBtn.click();
+    }
+
+
+
+
+
+
+
 }
