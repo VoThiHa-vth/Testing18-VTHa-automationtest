@@ -51,10 +51,4 @@ public class DashboardPage extends BasePage{
         logoutBtn.click();
     }
 
-
-
-
-
-
-
 }

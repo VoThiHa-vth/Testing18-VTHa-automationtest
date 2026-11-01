@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Allure;
 import org.apache.commons.logging.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage extends  BasePage{
+public class LoginPage extends BasePage{
 // input:
 //      data-v-7b563373=""
 //      class="oxd-input oxd-input--active"
@@ -32,10 +33,12 @@ public class LoginPage extends  BasePage{
 
 // Step1: truy cập vào page Login
     public void open(){
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        Allure.step("Open login page", () -> {
+            driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 // fix thêm cho case Web hiển thị lâu
 // đợi có điều kiện =>> đợi xuất hiện thẻ input
-    wait.until(ExpectedConditions.visibilityOfElementLocated(INPUT_USERNAME));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(INPUT_USERNAME));
+        });
     }
 
 // Step2: Login
@@ -46,18 +49,24 @@ public class LoginPage extends  BasePage{
 
 //      + Cách 2:  gôm các step chung 1 function. Cách viết như dưới:
     public void login(String username, String password) throws InterruptedException {
-        WebElement usernameInput = driver.findElement(INPUT_USERNAME);
-        usernameInput.sendKeys(username);
+        Allure.step("Enter username: " + username, () -> {
+            WebElement usernameInput = driver.findElement(INPUT_USERNAME);
+            usernameInput.sendKeys(username);
+        });
 
         Thread.sleep(2000);
 
-        WebElement passwordInput = driver.findElement(INPUT_PASSWORD);
-        passwordInput.sendKeys(password);
+        Allure.step("Enter password: ", () -> {
+            WebElement passwordInput = driver.findElement(INPUT_PASSWORD);
+            passwordInput.sendKeys(password);
+        });
 
         Thread.sleep(2000);
 
-        WebElement loginBtn = driver.findElement(LOGIN_BTN);
-        loginBtn.click();
+        Allure.step("Click login button", () -> {
+            WebElement loginBtn = driver.findElement(LOGIN_BTN);
+            loginBtn.click();
+        });
     }
 
 

@@ -27,7 +27,7 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
 
-        // Tat cai dong Chrome is automated.....
+        //Tắt cái dòng "Chrome is automated....." trên màn hình
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         options.setExperimentalOption("useAutomationExtension", false);
 

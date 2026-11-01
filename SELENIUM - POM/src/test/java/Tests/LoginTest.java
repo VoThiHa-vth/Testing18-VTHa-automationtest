@@ -2,6 +2,9 @@ package Tests;
 
 import Pages.LoginPage;
 import com.google.gson.Gson;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -10,6 +13,13 @@ import utils.ConfigReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
+
+// Epic: keyword trong Agile/Scrum
+// Epic: -> 1 task lớn: Authentication, authorization, user management
+// 1 epic sẽ có nhiều feature(task): Authentication (login, register, forgot password,...)
+// 1 feature sẽ có nhiều story (user story): login (login email, login google,...)
+// 1 feature sẽ có nhiều testcase: login success, login fail,...
+// epic > feature > story > test case
 
 public class LoginTest extends  BaseTest{
     record LoginData(String username, String password, boolean success ){}
@@ -52,7 +62,8 @@ public class LoginTest extends  BaseTest{
         Assert.assertEquals(driver.getCurrentUrl().contains("dashboard"), data.success());
     }
 
-
+    @Story("Login success")
+    @Severity(SeverityLevel.CRITICAL)
     @Test(description = "Test login success")
     public void testLoginSuccess() throws InterruptedException {
 // tạo đối tượng LoginPage
