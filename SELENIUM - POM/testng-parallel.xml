@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cybersoft automation parallel" parallel="tests" thread-count="3">
+    <test name="Login test">
+        <classes>
+            <class name="Tests.AirbnbLoginTest"/>
+        </classes>
+
+    </test>
+
+    <test name="Register test">
+        <classes>
+            <class name="Tests.AirbnbRegisterTest"/>
+        </classes>
+    </test>
+
+    <test name="Elearning login test">
+        <classes>
+            <class name="Tests.ElearningLoginTest"/>
+        </classes>
+    </test>
+
+</suite>

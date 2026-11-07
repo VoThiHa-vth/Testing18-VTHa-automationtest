@@ -21,7 +21,7 @@ import java.util.Objects;
 // 1 feature sẽ có nhiều testcase: login success, login fail,...
 // epic > feature > story > test case
 
-public class LoginTest extends  BaseTest{
+public class LoginTest extends  ParallelBaseTest{
     record LoginData(String username, String password, boolean success ){}
 
 //  @DataProvider: Testng lấy thng tin data rồi sẽ chạy test cho data đó
@@ -54,12 +54,12 @@ public class LoginTest extends  BaseTest{
 
     @Test(dataProvider = "loginData")
     public void testLoginData(LoginData data) throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver,wait);
+        LoginPage loginPage = new LoginPage(getDrive(),getWait());
         loginPage.open();
         loginPage.login(data.username(), data.password());
 
         Thread.sleep(2000);
-        Assert.assertEquals(driver.getCurrentUrl().contains("dashboard"), data.success());
+        Assert.assertEquals(getDrive().getCurrentUrl().contains("dashboard"), data.success());
     }
 
     @Story("Login success")
@@ -67,12 +67,12 @@ public class LoginTest extends  BaseTest{
     @Test(description = "Test login success")
     public void testLoginSuccess() throws InterruptedException {
 // tạo đối tượng LoginPage
-        LoginPage loginPage = new LoginPage(driver,wait);
+        LoginPage loginPage = new LoginPage(getDrive(),getWait());
         loginPage.open();
         loginPage.login(ConfigReader.get("username"), ConfigReader.get("password"));
 
 // so sánh expected với actual
-        String currentUrl = driver.getCurrentUrl();
+        String currentUrl = getDrive().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("dashboard")); // Kiểm tra pass với "dashboard vì sau login thành công vào thẳng dashboard
 
     }
